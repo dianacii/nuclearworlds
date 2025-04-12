@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nuclear Worlds</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url("{{ url_for('static', filename='background.png') }}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            max-width: 600px;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-weight: normal;
+            font-size: 18px;
+            color: #aaa;
+            margin: 0 0 20px 0;
+        }
+
+        p.description {
+            font-size: 16px;
+            color: #ccc;
+            margin-bottom: 30px;
+        }
+
+        .role-buttons button {
+            margin: 15px;
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: #f8b500; /* golden-orange */
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        .role-buttons button:hover {
+            background-color: #ffcc33; /* lighter golden */
+        }
+
+        /* Existing styles ... */
+        .spinner {
+        display: none;
+        margin-top: 20px;
+        }
+        .spinner::after {
+        content: '';
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        border: 4px solid #f8b500; /* gold-orange color */
+        border-top: 4px solid transparent;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+        to { transform: rotate(360deg); }
+        }
+    </style>
+        
+    <script>
+        function showSpinner() {
+        document.getElementById("spinner").style.display = "block";
+        }
+    </script>
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Nuclear Worlds</h1>
+        <h2>How will your world be?</h2>
+        <p class="description">
+            Every decision you make will alter the course of history.
+            Experience divergent timelines as you explore the complex relationship between scientific discovery, societal impact, and policy decisions surrounding nuclear technologies.
+            <br><br>Choose carefully, nuclear power can be a force for progress or a path to destruction.
+
+        </p>
+
+        <form action="/start" method="post" onsubmit="showSpinner()">
+            <div class="role-buttons">
+                <button type="submit" name="role" value="Scientist">Play as Scientist</button>
+                <button type="submit" name="role" value="Policy Maker">Play as Policy Maker</button>
+            </div>
+        </form>
+            
+            <div id="spinner" class="spinner"></div>
+        </form>
+    </div>
+</body>
+</html>

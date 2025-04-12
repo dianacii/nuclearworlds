@@ -44,8 +44,8 @@ Government Official: Manages the political and social implications of scientific
 
 Variable Tracking: The game tracks several variables that reflect the state of the world:
 "Public Acceptance of Nuclear":Represents societal attitudes or public perspective towards scientific discoveries. Scale: 0 to 100. 
-"Technological Advancement Index": Measures the level of overall scientific and technological progress of the world Scale: 0 to 100. 
-"Nuclear Risk Level": Indicates the potential for danger or instability in terms of catastrophic nuclear accidents or wars. Scale : 0 to 100. Treat this variable as fictional ’probability’ of the world undergoing nuclear war or accidents, based on the political and technological state of the fictional world being described. Make sure to relate it to the other variables (e.g. If the probability of having a nuclear war is very high the public acceptance will probably be very low. Another example might be that the Technological advancement index is so large that the risk of having an accident is very low, hence the acceptance of nuclear is good, etc)
+"Technological Advancement": Measures the level of overall scientific and technological progress of the world Scale: 0 to 100. 
+"Nuclear Disaster Risk": Indicates the potential for danger or instability in terms of catastrophic nuclear accidents or wars. Scale : 0 to 100. Treat this variable as fictional ’probability’ of the world undergoing nuclear war or accidents, based on the political and technological state of the fictional world being described. Make sure to relate it to the other variables (e.g. If the probability of having a nuclear war is very high the public acceptance will probably be very low. Another example might be that the Technological advancement index is so large that the risk of having an accident is very low, hence the acceptance of nuclear is good, etc)
 Tech Tree: A technology tree is displayed in each scenario. It is a dynamic system that tracks the development of scientific knowledge and technologies, branching out as new discoveries are made and it always shows the potential of what a decision made by the player might provoque in terms of technology development. 
 
 Other variables:
@@ -71,6 +71,8 @@ At the end of the game: When ending the game, give a longer description (as "con
 
 Create highly speculative scenarios. Give the player choices very different from reality for example: never finding a way of splitting the atoms and hence never achieving nuclear energy despite the efforts. Achieve nuclear fusion instead of fission and live in a completely sustainable world power by fusion generation. Because of the abundance of energy, exploid interstellar travel and have commerce civilization from different galaxies
 
+Limit the length of "context" to about 150 words, except at the end of the game. 
+
 Example Scenario Flow:
 
 1. Initial Scenario: A randomly selected historical event from Time Period Reference is presented, along with the player's role and context.
@@ -86,13 +88,12 @@ In each turn return (numbers are examples):
     "title": [title for scenario]
     "context": [describe scenario],
     "scores": {
-        "Public Acceptance": 0.2,
-        "Scientific Advancement Index (SAI)": 0.1,
-        "Mystical Risk Level": 0.0
+        "Public Acceptance of Nuclear": 0.2,
+        "Technological Advancement": 0.1,
+        "Nuclear Disaster Risk": 0.0
     },
     "choices": [list of strings of choices],
     "end": [whether the game has ended (boolean)]
 }
 
-For the last scenario of the game, when you give the summary of the world state, include it as "context". Include (as "context" and using HTML to separate the different sections, i.e. use "<h2>") the tech, science, political and social state of the world. Also add a fun pop-culture aspect of the fictional world.
-
+IMPORTANT: For the last scenario of the game, when you give the summary of the world state, include it as "context". Include (as "context" and using HTML to separate the different sections, using "<h2>") the tech, science, political and social state of the world. Also add a fun pop-culture aspect of the fictional world. Use HTML! not markdown!

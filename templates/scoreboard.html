@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scoreboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url("{{ url_for('static', filename='background.png') }}");
+            color: #f0f0f0;
+            padding: 40px;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: -1;
+        }
+        
+        table {
+            width: 100%;
+            max-width: 800px;
+            margin: auto;
+            border-collapse: collapse;
+            margin-bottom: 40px;
+        }
+
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #444;
+            text-align: center;
+        }
+
+        th {
+            background-color: #222;
+        }
+
+        tr.highlight {
+            background-color: rgba(255, 204, 0, 0.15);
+        }
+
+        h1, h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #f8b500;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Recent scores</h1>
+    <table>
+        <tr><th>Username</th><th>Role</th><th>Public Acceptance of Nuclear</th><th>Technological Advancement</th><th>Nuclear Distaster Risk</th><th>Time</th></tr>
+        <!-- <tr>
+            <th>#</th>
+            <th>Username</th>
+            <th>Role</th>
+            <th>Public Acceptance</th>
+            <th>Environmental Stability</th>
+            <th>Risk of Disaster</th>
+            <th>Time</th>
+        </tr> -->
+        {% for row in top_scores %}
+        <tr {% if last_score and row['id'] == last_score['id'] %} class="highlight" {% endif %}>
+            <!-- <td>{{ loop.index }}</td> -->
+            <td>{{ row['username'] }}</td>
+            <td>{{ row['role'] }}</td>
+            <td>{{ row['public_acceptance'] }}</td>
+            <td>{{ row['tech_advancement'] }}</td>
+            <td>{{ row['risk_of_nuclear_disaster'] }}</td>
+            <td>{{ row['created_at'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% if last_score %}
+        <h2>Your scores:</h2>
+        <table>
+            <tr><th>Username</th><th>Role</th><th>Public Acceptance of Nuclear</th><th>Technological Advancement</th><th>Nuclear Distaster Risk</th><th>Time</th></tr>
+            <tr class="highlight">
+                <td>{{ last_score['username'] }}</td>
+                <td>{{ last_score['role'] }}</td>
+                <td>{{ last_score['public_acceptance'] }}</td>
+                <td>{{ last_score['tech_advancement'] }}</td>
+                <td>{{ last_score['risk_of_nuclear_disaster'] }}</td>
+                <td>{{ last_score['created_at'] }}</td>
+            </tr>
+        </table>
+    {% endif %}
+
+    <a href="{{ url_for('index') }}">Back to Home</a>
+</body>
+</html>

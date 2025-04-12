@@ -1,2 +1,4 @@
 .env
 response.json
+scores.db
+nohup.out
